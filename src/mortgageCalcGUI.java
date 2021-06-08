@@ -29,10 +29,19 @@ public class mortgageCalcGUI extends JFrame {
                 // update the mortgage
                 int principle = (int)((Double.parseDouble(principleTextField.getText())));
                 //System.out.println("Principle: " + principle);
+                if(principle < 0) {
+                    principle = 0;
+                }
+                //If principal is less than 0, it will default to $0.00
                 double interest = ((Double.parseDouble(interestTextField.getText()))) / 1200;
                 //System.out.println("Interest: " + interest);
+                //No conditional needed
                 int period = (int)((Double.parseDouble(textField1.getText())));
                 //System.out.println("Years: " + period);
+                if(period < 0 || period > 100){
+                    period = 1;
+                }
+                //Period can't be negative
 
                 mortgageValue.setText(calculateMortgage(interest, period, principle));
 
